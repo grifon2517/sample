@@ -16,7 +16,7 @@ export const App = () => {
 					<img src={reactLogo} className="logo react" alt="React logo" />
 				</a>
 			</div>
-			<h1>Vite + React2024</h1>
+			<h1>Vite2024 + React2024</h1>
 			<div className="card">
 				<button onClick={() => setCount((count) => count + 1)}>
 					count is {count}
