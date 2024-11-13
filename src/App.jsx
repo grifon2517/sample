@@ -1,33 +1,22 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
+// import { useState } from 'react';
+import { User, Label } from './components';
+import styles from './app.module.css';
+
+const getUserFormServer = () => ({
+	name: 'Гриха',
+	age: 30,
+	email: 'akjsfakj@gmail.com',
+	phone: '+7 999 99 88',
+});
 
 export const App = () => {
-	const [count, setCount] = useState(0);
-
+	const user = getUserFormServer();
 	return (
-		<>
-			<div>
-				<a href="https://vite.dev" target="_blank">
-					<img src={viteLogo} className="logo" alt="Vite logo" />
-				</a>
-				<a href="https://react.dev" target="_blank">
-					<img src={reactLogo} className="logo react" alt="React logo" />
-				</a>
-			</div>
-			<h1>Vite + React2024</h1>
-			<div className="card">
-				<button onClick={() => setCount((count) => count + 1)}>
-					count is {count}
-				</button>
-				<p>
-					Edit <code>src/App.jsx</code> and save to test HMR
-				</p>
-			</div>
-			<p className="read-the-docs">
-				Click on the Vite and React logos to learn more
-			</p>
-		</>
+		<div className={styles.app}>
+			<Label color={`red`}>Приложение</Label>
+			<label className={styles.appLabel}>Приложение:</label>
+			<div>Разная информация приложения</div>
+			<User {...user}></User>
+		</div>
 	);
 };
