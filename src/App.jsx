@@ -1,30 +1,22 @@
-import { useState } from 'react';
-import styles from './app.module.css';
-import PropTypes from 'prop-types';
 
-const AppLayout = ({ a, b, sum, setA, setB }) => (
-	<div className={styles.App}>
-		<div> A: {a}</div>
-		<button onClick={() => setA(a + 1)}>прибавить 1</button>
-		<div> B: {b}</div>
-		<button onClick={() => setB(b + 1)}>прибавить 1</button>
-		<div>Сумма A+B: {sum}</div>
-	</div>
-);
+import { useState } from 'react';
+import { AppLayout } from './appLayout';
+import {STATUS, PLAYER, } from './Constants/main'
+
+import {onCellClick, handleRestart} from './handlers/main'
+import {createEmptyField} from './utils/main'
+
 
 export const App = () => {
-	const [a, setA] = useState(0);
-	const [b, setB] = useState(0);
+	const [status, setStatus] = useState(STATUS.TURN);
+	const [currentPlayer, setCurrentPlayer] = useState(PLAYER.CROSS);
+	
+	const [field, setField] = useState (createEmptyField());
 
-	const sum = a + b;
-	console.log(sum);
-	return <AppLayout a={a} b={b} sum={sum} setA={setA} setB={setB} />;
+	const state = {status, setStatus, currentPlayer, setCurrentPlayer, field, setField};
+
+	
+	return  <AppLayout status={status} currentPlayer={currentPlayer} field={field} onCellClick={(index) => onCellClick(state, index)}  handleRestart={() => handleRestart(state)}/>;
+	
 };
 
-AppLayout.propTypes = {
-	a: PropTypes.number.isRequired,
-	b: PropTypes.number.isRequired,
-	sum: PropTypes.number.isRequired,
-	setA: PropTypes.func.isRequired,
-	setB: PropTypes.func.isRequired,
-};

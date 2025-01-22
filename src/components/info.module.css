@@ -1,0 +1,11 @@
+.info {
+    padding: 0.5em 1.5em; 
+    background-image: linear-gradient(rgba(158,158,158,0.5), rgb(158,158,158), rgba(158,158,158,0.5)); 
+    color: #fff; 
+    font-size: 1.4em; 
+    border: 2px solid rgb(158,158,158);
+    border-radius: 0.4em; 
+    margin-bottom: 1rem; 
+	background-image: linear-gradient(rgba(16, 17, 17, 0.555),  rgb(32, 35, 36),  rgba(26, 32, 32, 0.5)); 
+    border-color: rgb(197, 201, 214); 
+}
