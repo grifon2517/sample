@@ -1,22 +1,18 @@
-
 import { PLAYER_ACTION } from '../Constants/player-action';
 import { PLAYER_NAME } from '../Constants/player-name';
 import { STATUS } from '../Constants/status';
-
+import { useReduxState } from '../redux-manger';
 
 import { InfoLayout } from './infoLayout';
-import PropTypes from 'prop-types';
 
-export const Info = ({status, currentPlayer}) => {
-    const playerAction = PLAYER_ACTION[status]
-    const playerName = PLAYER_NAME[currentPlayer]
-	
-	const information = status === STATUS.DRAW ?'Ничья' : `${playerAction}: ${playerName}`
+export const Info = () => {
+	const { status, currentPlayer } = useReduxState();
 
-	return <InfoLayout information={information}/>;
-};
+	const playerAction = PLAYER_ACTION[status];
+	const playerName = PLAYER_NAME[currentPlayer];
 
-Info.propTypes = {
-    status: PropTypes.number.isRequired,
-    currentPlayer: PropTypes.number.isRequired,
+	const information =
+		status === STATUS.DRAW ? 'Ничья' : `${playerAction}: ${playerName}`;
+
+	return <InfoLayout information={information} />;
 };

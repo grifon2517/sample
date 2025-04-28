@@ -1,22 +1,12 @@
-
-import { useState } from 'react';
 import { AppLayout } from './appLayout';
-import {STATUS, PLAYER, } from './Constants/main'
-
-import {onCellClick, handleRestart} from './handlers/main'
-import {createEmptyField} from './utils/main'
-
+import { RESTART_GAME } from './actions';
+import { useDispatch } from './redux-manger';
 
 export const App = () => {
-	const [status, setStatus] = useState(STATUS.TURN);
-	const [currentPlayer, setCurrentPlayer] = useState(PLAYER.CROSS);
-	
-	const [field, setField] = useState (createEmptyField());
+	const dispatch = useDispatch();
+	const handleRestart = () => {
+		dispatch(RESTART_GAME);
+	};
 
-	const state = {status, setStatus, currentPlayer, setCurrentPlayer, field, setField};
-
-	
-	return  <AppLayout status={status} currentPlayer={currentPlayer} field={field} onCellClick={(index) => onCellClick(state, index)}  handleRestart={() => handleRestart(state)}/>;
-	
+	return <AppLayout handleRestart={handleRestart} />;
 };
-
