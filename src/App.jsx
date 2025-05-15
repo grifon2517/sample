@@ -1,6 +1,6 @@
 import { AppLayout } from './appLayout';
 import { RESTART_GAME } from './actions';
-import { useDispatch } from './redux-manger';
+import { useDispatch } from 'react-redux';
 
 export const App = () => {
 	const dispatch = useDispatch();

@@ -2,11 +2,12 @@
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import { App } from './App.jsx';
-import { ReduxRenderer } from './redux-manger.js';
+
 import { store } from './store.js';
+import { Provider } from 'react-redux';
 
 createRoot(document.getElementById('root')).render(
-	<ReduxRenderer store={store}>
+	<Provider store={store}>
 		<App />
-	</ReduxRenderer>,
+	</Provider>,
 );
